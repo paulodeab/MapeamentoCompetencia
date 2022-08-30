@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ prof.nome }} - Mapeamento Por Competências: </title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+    <div class="container" style="padding:20px;">
+        <h1 style="text-align: center">MAPEAMENTO POR COMPETÊNCIAS</h1>
+        <h2 style="text-align: center">SESI SENAI BETIM</h2>
+        <br>
+        <div>
+            <h3>INFORMAÇÕES PESSOAIS</h3>
+            <label> NOME: </label>
+            <label>{{ prof.nome }} </label>
+            <br>
+            <label> TITULAÇÃO ACADÊMICA: </label>
+            <label>{{prof.titulacao }}</label>
+            <br>
+            <label>FORMAÇÃO ACADÊMICA: </label>
+            <label>{{ prof.formacao }}</label>
+            <br>
+            <label>ÁREA DE ATUAÇÃO NA UNIDADE: </label>
+            <label>{{prof.areaatuacao}}</label>
+            <br>
+            <label>DATA DAS INFORMAÇÕES:</label>
+            <label>{{prof.data_resposta.strftime('%d/%m/%Y')}}</label>
+        </div>
+        <div>
+            <br>
+            <h3>UNIDADES CURRICULARES QUE MINISTRA</h3>
+            <ul>
+            {%for curso in prof.curso%}
+                <li>
+                    <label> {{curso}} : {{prof.curso[curso]}}</label>
+                </li> 
+            {% endfor %}
+            </ul> 
+        </div>
+        
+    </div>
+    <footer class="row">
+        <div class="col">
+         ________________________
+            <br>
+            Supervisão Pedagógica         
+        </div>
+        <div class="col">
+         _______________________ 
+            <br>
+            Professor/Instrutor
+        </div>
+</footer>
+    {{ bootstrap.load_js() }}
+</body>
+</html>

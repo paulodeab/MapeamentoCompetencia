@@ -1,0 +1,37 @@
+<head>
+
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+
+    <h2> Mapeamento por Competências</h2>
+
+    <form action="search" method="post" enctype="multipart/form-data">
+        <label>Buscar Arquivo</label>
+        <input type="file" class="form-control" name="file">
+        <input type="submit" value="carregar">
+    </form>
+
+
+    <table class="table table-striped">
+        <thead>
+            <td>Nome</td>
+            <td>Ação</td>
+        </thead>
+        <tbody>
+            {% for professor in lista %}
+            <tr> 
+                <td>{{professor.nome}}</td>
+                <td> 
+                    <form action="/" method="POST" target="_blank">
+                        <input type="text" value={{professor.id}} name="id" hidden>
+                        <input type="submit" value="Gerar" class="btn btn-primary">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ bootstrap.load_js() }}
+</body>
